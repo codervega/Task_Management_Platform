@@ -1,0 +1,39 @@
+.analytics-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.analytics-section {
+  margin-bottom: 40px;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.analytics-section h2 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.chart-container {
+  position: relative;
+}
+
+/* Responsive design for mobile */
+@media (max-width: 768px) {
+  .analytics-container {
+    padding: 10px;
+  }
+  
+  .analytics-section {
+    padding: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .chart-container {
+    height: 250px !important;
+    width: 100% !important;
+  }
+}

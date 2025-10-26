@@ -1,0 +1,43 @@
+version: '3.9'
+
+services:
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: mydb
+    volumes:
+      - mongo-data:/data/db  
+  backend:
+    build: ./backend
+    container_name: backend
+    restart: always
+    ports:
+      - "5173:5173" 
+    environment:
+      - MONGO_URL=mongodb://mongo:27017/mydb
+    depends_on:
+      - mongo
+    volumes:
+      - ./backend:/app  # ✅ mount local code for live changes (dev only)
+      - /app/node_modules  # avoid overwriting node_modules from host
+
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_API_URL=http://localhost:5000
+    depends_on:
+      - backend
+    volumes:
+      - ./frontend:/app  
+      - /app/node_modules
+
+volumes:
+  mongo-data:
