@@ -1,1 +1,0 @@
-req.user = 'dinga'

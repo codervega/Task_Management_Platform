@@ -1,1 +1,0 @@
-if(err) throw err;
